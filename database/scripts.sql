@@ -10,14 +10,14 @@ create table usuarios
 
 CREATE table propietarios
 (
-    nro_identificación varchar(20),
+    nro_identificacion varchar(20),
     nombre varchar(255) not NULL,
     apellidos varchar(255) not NULL,
-    ciudad_residencia varchar(20),
+    ciudad_residencia varchar(20) not null,
     direccion varchar(255),
     celular varchar(20),
     correo_electronico varchar(100),
-    PRIMARY KEY(nro_identificación)
+    PRIMARY KEY(nro_identificacion)
 );
 
 CREATE table departamentos
@@ -30,7 +30,7 @@ CREATE table departamentos
 CREATE table ciudades
 (
     codigo_ciudad varchar(20),
-    dep_ciudad varchar(20),
+    dep_ciudad varchar(20) not NULL,
     nombre_ciudad varchar(100) not NULL,
     PRIMARY KEY (codigo_ciudad)
 );
@@ -50,8 +50,8 @@ CREATE table apartamentos
     nit_unidad varchar(20),
     nro_apartamento varchar(20),
     Bloque varchar(20),
-    id_propietario varchar(20),
-    coeficiente numeric(3),
+    id_propietario varchar(20) not null,
+    coeficiente numeric(3) DEFAULT 0,
     PRIMARY KEY (nit_unidad,nro_apartamento)
 );
 
@@ -67,10 +67,11 @@ CREATE table facturas
 
 CREATE table conceptos_facturados
 (
+    id_concept_fa varchar (30),
     nro_factura varchar(20),
     concepto varchar(20),
     valor numeric (9,2) not NULL,
-    PRIMARY KEY (nro_factura, concepto)
+    PRIMARY KEY (id_concept_fa)
 );
 
 CREATE table conceptos
@@ -86,6 +87,7 @@ CREATE table pagos
     id_pago varchar(20),
     fecha_pago date,
     canal_pago varchar(20),
+    id_factura VARCHAR(20),
     PRIMARY KEY (id_pago)
 );
 
@@ -106,13 +108,9 @@ CREATE table ciclos
 
 -- Claves Foráneas
 
-alter table propietarios
-ADD CONSTRAINT fk_propietarios_ciudad
-FOREIGN key (ciudad_residencia)
-REFERENCES  ciudades(codigo_ciudad);
 
 alter table ciudades
-add CONSTRAINT fk_ciudad_departa
+add CONSTRAINT fk_departa_ciudad
 FOREIGN key (dep_ciudad)
 REFERENCES  departamentos(codigo_departamento);
 
@@ -127,6 +125,11 @@ add CONSTRAINT fk_unidad_apartamento
 FOREIGN key (nit_unidad)
 REFERENCES  unidades_residenciales(nit_unidad);
 
+alter table apartamentos
+add CONSTRAINT fk_propie_aparta
+FOREIGN key (id_propietario)
+REFERENCES  propietarios(nro_identificacion);
+
 alter table facturas
 add CONSTRAINT fk_ciclo_factura
 FOREIGN key (ciclo_factura)
@@ -134,13 +137,33 @@ REFERENCES  ciclos(id_ciclo);
 
 alter table facturas
 add CONSTRAINT fk_apatamento_factura
-FOREIGN key (apartamento, nit_unidad)
-REFERENCES  apartamento(nro_apartamento, nit_unidad);
+FOREIGN key (nit_unidad, apartamento)
+REFERENCES  apartamentos(nit_unidad, nro_apartamento);
 
 alter table conceptos_facturados
 add CONSTRAINT fk_concepto_fact
 FOREIGN key (concepto)
 REFERENCES  conceptos(id_concepto);
+
+alter table conceptos_facturados
+add CONSTRAINT fk_factura
+FOREIGN key (nro_factura)
+REFERENCES  facturas(nro_factura);
+
+ALTER table pagos
+add CONSTRAINT fk_canal_pago
+FOREIGN key (canal_pago)
+REFERENCES canales_pago(id_canal_pago);
+
+ALTER table pagos
+add CONSTRAINT fk_factura_pago
+FOREIGN key (id_factura)
+REFERENCES facturas(nro_factura);
+
+
+
+
+
 
 
 
