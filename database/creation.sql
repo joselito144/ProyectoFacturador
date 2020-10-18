@@ -110,7 +110,7 @@ create TABLE recibos_caja
 (
     id_recibo VARCHAR(20),
     fecha_recibo date,
-    pagado_a VARCHAR(100),
+    recibido_de VARCHAR(20),
     valor_recibo NUMERIC(9,2) not null,
     descripcion_concepto VARCHAR(255),
     PRIMARY KEY (id_recibo)
@@ -123,7 +123,6 @@ alter table ciudades
 add CONSTRAINT fk_departa_ciudad
 FOREIGN key (dep_ciudad)
 REFERENCES  departamentos(codigo_departamento);
-
 
 alter table unidades_residenciales
 add CONSTRAINT fk_ciudad_unidad
@@ -169,3 +168,8 @@ ALTER table pagos
 add CONSTRAINT fk_factura_pago
 FOREIGN key (id_factura)
 REFERENCES facturas(nro_factura);
+
+ALTER TABLE recibos_caja
+add CONSTRAINT fk_propie_recibo
+FOREIGN KEY (recibido_de)
+REFERENCES propietarios(nro_identificacion);
