@@ -116,6 +116,13 @@ create TABLE recibos_caja
     PRIMARY KEY (id_recibo)
 );
 
+create table unidades_administradas
+(
+    usuario VARCHAR(20),
+    nit_unidad VARCHAR(20),
+    PRIMARY KEY (usuario, nit_unidad)
+);
+
 -- Claves Foráneas
 
 
@@ -173,3 +180,13 @@ ALTER TABLE recibos_caja
 add CONSTRAINT fk_propie_recibo
 FOREIGN KEY (recibido_de)
 REFERENCES propietarios(nro_identificacion);
+
+ALTER TABLE unidades_administradas
+ADD CONSTRAINT fk_usuario_adm
+FOREIGN KEY (usuario)
+REFERENCES usuarios(usuario);
+
+ALTER TABLE unidades_administradas
+ADD CONSTRAINT fk_unidad_admin
+FOREIGN KEY (nit_unidad)
+REFERENCES unidades_residenciales(nit_unidad);
