@@ -51,7 +51,7 @@ CREATE table apartamentos
     nro_apartamento varchar(20),
     Bloque varchar(20),
     id_propietario varchar(20) not null,
-    coeficiente numeric(3) DEFAULT 0,
+    coeficiente numeric(3) DEFAULT 0 not null,
     PRIMARY KEY (nit_unidad,nro_apartamento)
 );
 
@@ -68,8 +68,8 @@ CREATE table facturas
 CREATE table conceptos_facturados
 (
     id_concept_fa varchar (30),
-    nro_factura varchar(20),
-    concepto varchar(20),
+    nro_factura varchar(20) not null,
+    concepto varchar(20) not null,
     valor numeric (9,2) not NULL,
     PRIMARY KEY (id_concept_fa)
 );
@@ -85,32 +85,32 @@ CREATE table conceptos
 CREATE table pagos
 (
     id_pago varchar(20),
-    fecha_pago date,
-    canal_pago varchar(20),
-    id_factura VARCHAR(20),
+    fecha_pago date not null,
+    canal_pago varchar(20) not null,
+    id_factura VARCHAR(20) not null,
     PRIMARY KEY (id_pago)
 );
 
 CREATE table canales_pago
 (
     id_canal_pago varchar(20),
-    descripcion_canal_pago varchar(255),
+    descripcion_canal_pago varchar(255) not null,
     PRIMARY KEY (id_canal_pago)
 );
 
 CREATE table ciclos
 (
     id_ciclo varchar(20),
-    anio_ciclo varchar(20),
-    mes_cicclo varchar(10),
+    anio_ciclo varchar(20) not null,
+    mes_cicclo varchar(10) not null,
     PRIMARY KEY (id_ciclo)
 );
 
 create TABLE recibos_caja
 (
     id_recibo VARCHAR(20),
-    fecha_recibo date,
-    recibido_de VARCHAR(20),
+    fecha_recibo date not null,
+    recibido_de VARCHAR(20) not null,
     valor_recibo NUMERIC(9,2) not null,
     descripcion_concepto VARCHAR(255),
     PRIMARY KEY (id_recibo)
