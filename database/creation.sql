@@ -118,7 +118,7 @@ create TABLE recibos_caja
 
 create table unidades_administradas
 (
-    usuario VARCHAR(20),
+    usuario VARCHAR(100),
     nit_unidad VARCHAR(20),
     PRIMARY KEY (usuario, nit_unidad)
 );
