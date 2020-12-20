@@ -1,8 +1,5 @@
 <div class="container" *ngIf="!user">
     <br>
-    <h1 style="text-align:center">
-        Bienvenido a Arrendamientos Pocholo
-    </h1>
     <br>
     <div class="text-center">
         <img src="https://1.bp.blogspot.com/-Vju3PlmCJzU/Vw5W7SE2j8I/AAAAAAAAAkU/8UbVxJH2Rek009-B7p2o_XjEAx_ZaqoEACLcB/s640/decoracion-sala-living-black-and-white-blanco-negro-estilo-moderno-dise%25C3%25B1o-tendencias-hogar-color-tips-hermoso-5.jpg" class="mainPicture">
@@ -11,11 +8,11 @@
 </div>
 <div class="container" *ngIf="!user">
 
-    <a routerLink="/register">
-        <p style="text-align: center" *ngIf="!user">
-            Registrate con nostros
-        </p>
-    </a>
+    <div class="container">
+        <h1 style="text-align: center;">
+            Tus Unidades
+        </h1>
+    </div>
 </div>
 <div>
     <hr>
@@ -23,7 +20,7 @@
 <br>
 <div class="container">
     <p style="text-align:center">
-        Estas propiedades te pueden interesar
+        <strong>Tus Unidades</strong>
     </p>
 </div>
 
@@ -32,25 +29,24 @@
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
             <div>
                 <p style="text-align: left">
-                    <span>
-                        <i class="fas fa-map-marker-alt"></i>
-                    </span>
-                    <strong> Ubicación: </strong>{{unit.barrio}} <br>
-                    Valor: $ {{unit.valorCanon | number}} <br>
+
+                    <strong> Razon Social: </strong>{{unit.razon_social_unidad}} <br>
+                    Dirección: {{unit.direccion_unidad}} <br>
                 </p>
             </div>         
         </div>
-        <a routerLink="/details/{{unit.id}}">
-            <img src="{{unit.fotoPrincipal[0]}}" class="card-img-top">
+        <a routerLink="/details/{{unit.nit_unidad[0]}}">
+            <img src="https://4.bp.blogspot.com/-nEC02MUcFjs/WR2kAr5j9XI/AAAAAAAAAA0/UdpR1qVrC1IDKqG_dyLMGv0otXd6BMFkwCLcB/s1600/ley%2Bde%2Bpropiedad%2Bhorizontal.png" class="card-img-top">
         </a>
         
         <div class="card-body">
             <div>
                 <p style="text-align: left">
-                    <i class="fas fa-bed"></i>   {{unit.habitaciones}}  |  
-                    <i class="fas fa-toilet"></i>   {{unit.banios}}  |  
-                    <i class="fas fa-truck-pickup"></i>   {{unit.parqueadero}}<br>
-                    Área: {{unit.area}} m<sup>2</sup> - Estrato {{unit.estrato}} <br>
+                    <span>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                      {{unit.nombre_ciudad}}  |  
+                    <i class="fas fa-toilet"></i>   {{unit.telefono_unidad}}  |  
                 </p>
             </div> 
         </div>

@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   user: User = {
-    username: '',
-    password: ''
+    usuario: '',
+    contrasenia: ''
   };
   mensaje = '';
   logged: any;

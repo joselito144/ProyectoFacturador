@@ -21,7 +21,7 @@ username: string;
   }
 
   getUnits() {
-    return this.http.get('https://itbbqjsso4.execute-api.us-east-2.amazonaws.com/Produccion');
+    return this.http.get('http://localhost:3000/units/Jose');
   }
 
   getUnit(id: string) {

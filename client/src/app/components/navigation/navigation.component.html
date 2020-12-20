@@ -13,13 +13,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-link" *ngIf = "user">
-          <a class="nav-link" routerLink="/units/mine"><i class="fas fa-list-ul"></i> Ver mis publicaciones</a>
+          <a class="nav-link" routerLink="/units/mine"> Facturas</a>
         </li>
         <li class= "nav-item" *ngIf = "user">
-          <a class="nav-link" routerLink="/units/add"><i class="fas fa-plus-square"></i> Publicar</a>
+          <a class="nav-link" routerLink="/units/add"> Pagos</a>
         </li>
         <li class= "nav-item" *ngIf = "user">
-          <a class="nav-link" routerLink="/units/search"><i class="fas fa-search"></i> Buscar</a>
+          <a class="nav-link" routerLink="/units/search"> Informes</a>
         </li>
         <li class= "nav-item" *ngIf = "user">
           <a class="nav-link" href="/units" (click) = "closeSesion()"><i class="fas fa-door-open"></i> Cerrar Sesión</a>
@@ -29,9 +29,6 @@
         </li>
         <li class="nav-item" *ngIf = "!user">
           <a class="nav-link" href="/login"><i class="fas fa-user"></i> Iniciar Sesión</a>
-        </li>
-        <li class="nav-item" *ngIf = "!user">
-          <a class="nav-link" href="/register"><i class="fas fa-door-open"></i> Registrarse</a>
         </li>
       </ul>
     </div>

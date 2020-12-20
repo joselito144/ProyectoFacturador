@@ -6,20 +6,20 @@ import { User } from '../../models/users';
 import { NavigationComponent } from '../navigation/navigation.component';
 
 
-// Login
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 
-// Username and password
+
 export class LoginComponent implements OnInit {
   navigationComponent: NavigationComponent;
   logged: any;
   user: User = {
-    username: '',
-    password: ''
+    usuario: '',
+    contrasenia: ''
   };
   mensaje = '';
 
@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit {
     } else {
       this.unitsService.validateUser(this.user).subscribe(
          res => {
-          this.logged = res;
-          if (this.logged) {
+          this.logged = res.toString;
+          console.log(this.user)
+          if (res) {
             localStorage.clear();
             localStorage.setItem('user', JSON.stringify(nUser.value));
             this.user = JSON.parse(localStorage.getItem('user'));

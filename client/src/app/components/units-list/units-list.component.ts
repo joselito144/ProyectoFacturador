@@ -22,8 +22,8 @@ export class UnitsListComponent implements OnInit {
     console.log(this.user);
     this.unitService.getUnits().subscribe(
       res => {
-        this.items = res;
-        this.units = this.items.Items;
+        this.units = res;
+        console.log(this.units);
       },
       err => console.log(err)
 
