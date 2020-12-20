@@ -1,0 +1,83 @@
+<div class="table col-md-4 offset-md-1">
+  <thead>
+    <th scope="colgroup" colspan="2" class="text-center">
+      Ficha Técnica
+    </th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Barrio</th>
+      <td>{{ unit.barrio }}</td>
+    </tr>
+    <tr>
+      <th>Estrato</th>
+      <td>{{ unit.estrato }}</td>
+    </tr>
+    <tr>
+      <th>Area</th>
+      <td>{{ unit.area }} m<sup>2</sup></td>
+    </tr>
+    <tr>
+      <th>Valor Arriendo</th>
+      <td>$ {{ unit.valorCanon | number }}</td>
+    </tr>
+    <tr>
+      <th>Habitaciones</th>
+      <td>{{ unit.habitaciones }}</td>
+    </tr>
+    <tr>
+      <th>Baños</th>
+      <td>{{ unit.banios }}</td>
+    </tr>
+    <tr>
+      <th>Tipo Cocina</th>
+      <td>{{ unit.tipoCocina }}</td>
+    </tr>
+    <tr>
+      <th>Parqueadero</th>
+      <td>{{ unit.parqueadero }}</td>
+    </tr>
+    <tr>
+      <th>Tipo Parqueadero</th>
+      <td>{{ unit.tipoParqueadero }}</td>
+    </tr>
+    <tr>
+      <th>Dirección</th>
+      <td>{{ unit.direccion }}</td>
+    </tr>
+  </tbody>
+</div>
+
+<div class="col-md-6 text-center">
+  <br><br>
+  <div class="container">
+    <div class="row justify-content-between">
+      <button  (click)="disminuirPos()" class="btn float-left"><i class="fas fa-angle-left"></i></button>
+      <p class="text-center">{{position + 1}}/{{images.length}}</p>
+      <button  (click)="aumentarPos()" class="btn float-right"><i class="fas fa-angle-right"></i></button>    
+    </div>
+  </div>
+<br><br>
+  <img src = {{images[position]}} class="mainPicture">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div *ngFor="let image of images">
+        <div *ngIf = "image == images[position], else noSelected">
+          <img src="{{image}}" class="selectedThumb">
+          &nbsp;
+        </div>
+        <ng-template #noSelected>
+          <img src="{{image}}" class="thumbPicture" (click) = selectImage(image)>
+          &nbsp;
+        </ng-template>
+        
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
